@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  server:
+    image: pingpong:latest
+    volumes:
+      - data:/data
+
+  client:
+    image: ping-client:latest
+    depends_on: 
+      - server
+    environment:
+      - PORT=8080
+    volumes:
+      - data:/data
+
+volumes:
+  data:
